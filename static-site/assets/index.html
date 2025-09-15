@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Demo JSONP</title>
+  </head>
+  <body>
+    <h1>Phản hồi</h1>
+    <div id="listResult">Loading…</div>
+
+    <script>
+      function displayData(data) {
+        if (!Array.isArray(data) || data.length === 0) {
+          document.getElementById("listResult").innerText = "Không có dữ liệu.";
+          return;
+        }
+        const html = data
+          .map(
+            (item) => `<p><strong>${item.Name}</strong>: ${item.Message}</p>`
+          )
+          .join("");
+        document.getElementById("listResult").innerHTML = html;
+      }
+
+      const script = document.createElement("script");
+      script.src =
+        "https://script.google.com/macros/s/AKfycbzIpDPb-1wkwxzrUTu1x5fOmyAqMfjTBvXLOZOGXwXkLkuWnzluBEvYZUy4tloEGflPdg/exec" +
+        "?action=getAll&callback=displayData";
+      document.head.appendChild(script);
+    </script>
+  </body>
+</html>
