@@ -1,0 +1,10 @@
+name = "flonova-test"
+compatibility_date = "2025-09-15"
+
+# Đường đến file Worker
+main = "index.js"
+
+# Cấu hình assets: thư mục chứa static site
+[assets]
+bucket = "./dist"
+main = "index.html"

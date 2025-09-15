@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Flonova Proxy</title>
+  </head>
+  <body>
+    <h1>Flonova Proxy Test Page</h1>
+    <div id="data">Loading data...</div>
+
+    <script>
+      // Gọi Worker proxy để test
+      fetch("/api/content")
+        .then((r) => r.json())
+        .then((json) => {
+          document.getElementById("data").textContent =
+            JSON.stringify(json).slice(0, 200) + "…";
+        })
+        .catch((err) => {
+          document.getElementById("data").textContent = "Error: " + err;
+        });
+    </script>
+  </body>
+</html>
